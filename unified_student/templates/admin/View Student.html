@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="/myapp/view_student_post/">
+{% csrf_token %}
+
+  <table width="200" border="1"class="table table-bordered">
+    <tr>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" class="form-control"/></td>
+      <td><input type="submit" name="Search" id="Search" value="Search" class="btn btn-success"/></td>
+    </tr>
+  </table>
+  <table width="200" border="1"class="table table-bordered">
+    <tr>
+      <td>SI No</td>
+      <td>Name</td>
+      <td>Contact</td>
+      <td>DOB</td>
+      <td>Gender</td>
+      <td>College</td>
+      <td>Department</td>
+      <td>Semester</td>
+      <td>Photo</td>
+      <td>Address</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.name }}&nbsp;</td>
+      <td>{{ i.email }}<br>{{ i.phone }}</td>
+      <td>&nbsp;{{ i.dob }}</td>
+      <td>{{ i.gender }}&nbsp;</td>
+      <td>{{ i.college_name }}&nbsp;</td>
+      <td>{{ i.department }}</td>
+      <td>{{ i.semester }}</td>
+      <td><img src="{{ i.photo }}" height="100" width="100" alt=""/></td>
+      <td>&nbsp;{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }}<br>{{ i.district }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'Event Coordinator/ec_index.html' %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="/myapp/event_add_event_post/" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table width="200" border="1" class="table table-bordered">
+    <tr>
+      <td>Date</td>
+      <td><label for="textfield"></label>
+      <input type="date" name="textfield" id="textfield" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>College Name</td>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Event Name</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="Duration" id="textfield3"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Venue</td>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Activity Point</td>
+      <td><select name="select" id="select" class="form-control" required>
+                {% for i in activity %}
+                    <option value="{{ i.id }}">{{ i.category }}-{{ i.point }}</option>
+                {% endfor %}
+            </select></td>
+    </tr>
+
+     <tr>
+      <td>Poster</td>
+      <td><p>
+        <label for="textfield5"></label>
+        <input type="file" name="textfield6" id="textfield5"required class="form-control" />
+      </p></td>
+    </tr>
+
+     <tr>
+      <td>amount</td>
+      <td><p>
+        <label for="textfield6"></label>
+        <input type="text" name="textfield7" id="textfield5"required class="form-control" />
+      </p></td>
+    </tr>
+     <tr>
+      <td>latitude</td>
+      <td><p>
+        <label for="textfield8"></label>
+        <input type="text" name="textfield8" id="textfield8"required class="form-control" />
+      </p></td>
+    </tr>
+     <tr>
+      <td>longitude</td>
+      <td><p>
+        <label for="textfield9"></label>
+        <input type="text" name="textfield9" id="textfield9"required class="form-control" />
+      </p></td>
+    </tr>
+
+
+
+    <tr> 
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Add"class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}
+</body>
+</html>

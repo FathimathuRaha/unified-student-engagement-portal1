@@ -1,0 +1,51 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow rounded-4 p-4">
+        <h3 class="text-center text-primary mb-4">
+            <i class="bi bi-ticket-perforated-fill me-2"></i>Edit Ticket
+        </h3>
+
+        <form method="post" action="/myapp/edit_ticket_post/">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ data.id }}">
+
+            <div class="mb-3">
+                <label for="textfield" class="form-label">Ticket No</label>
+                <input type="text" name="textfield" id="textfield" value="{{ data.ticket_no }}" required class="form-control rounded-pill shadow-sm" />
+            </div>
+
+            <div class="mb-3">
+                <label for="textfield2" class="form-label">Date</label>
+                <input type="date" name="textfield2" id="textfield2" value="{{ data.date|date:'Y-m-d' }}" required class="form-control rounded-pill shadow-sm" />
+            </div>
+
+            <div class="mb-3">
+                <label for="select1" class="form-label">Student Name</label>
+                <select name="select1" id="select1" class="form-select rounded-pill shadow-sm">
+                    {% for i in student %}
+                        <option value="{{ i.id }}" {% if i.id == data.STUDENT_id %}selected{% endif %}>{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="select" class="form-label">Event Name</label>
+                <select name="select" id="select" class="form-select rounded-pill shadow-sm">
+                    {% for i in eventd %}
+                        <option value="{{ i.id }}" {% if i.id == data.EVENT_id %}selected{% endif %}>{{ i.event_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                    <i class="bi bi-pencil-fill me-2"></i>Edit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

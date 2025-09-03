@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'Event Coordinator/ec_index.html' %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="/myapp/event_edit_event_post/">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ data.id }}">
+  <table width="200" border="1" class="table table-bordered">
+    <tr>
+      <td>Date</td>
+      <td><label for="textfield"></label>
+      <input type="date" name="textfield" id="textfield" value="{{ data.date|date:'Y-m-d' }}"required class="form-control"  /></td>
+    </tr>
+          <tr>
+      <td>College Name</td>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" value="{{ data.College_name }}"required class="form-control"  /></td>
+    </tr>
+
+    <tr>
+      <td>Event Name</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.event_name }}" required class="form-control"  /></td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.duration }}"required class="form-control"  /></td>
+    </tr>
+    <tr>
+      <td>Venue</td>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.venue }}"required class="form-control" /></td>
+    </tr>
+  <td>Point</td>
+      <td><select name="select" id="select" class="form-control" required>
+                {% for i in activity %}
+                    <option value="{{ i.id }}" {% if i.id == data.ACTIVITY.id %}selected{% endif %}>{{ i.category }}-{{ i.point }}</option>
+                {% endfor %}
+            </select></td>
+    <tr>
+      <td>amount</td>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield66" id="textfield5" value="{{ data.amount }}"required class="form-control"  /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Edit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+
+</body>
+</html>

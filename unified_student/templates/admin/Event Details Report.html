@@ -1,0 +1,47 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5 mb-5" style="min-height: 80vh;">
+    <div class="card shadow-lg rounded-4 p-4 w-100" style="max-width: 600px;">
+        <h3 class="text-center text-primary mb-4 fw-bold">
+            <i class="bi bi-journal-text me-2"></i>Add Event Report
+        </h3>
+
+        <form method="post" action="/myapp/add_eventdetails_report_post/">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="select_event" class="form-label">Event</label>
+                <select name="events" id="select_event" class="form-select rounded-pill shadow-sm" required>
+                    <option value="" disabled selected>Select an Event</option>
+                    {% for i in eventd %}
+                        <option value="{{ i.id }}">{{ i.event_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="select_coordinator" class="form-label">Event Coordinator</label>
+                <select name="select1" id="select_coordinator" class="form-select rounded-pill shadow-sm" required>
+                    <option value="" disabled selected>Select a Coordinator</option>
+                    {% for i in date %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="textarea" class="form-label">Report</label>
+                <textarea name="textarea" id="textarea" class="form-control shadow-sm rounded-3" rows="5" placeholder="Write report here..." required></textarea>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold">
+                    <i class="bi bi-send-fill me-2"></i>Add Report
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

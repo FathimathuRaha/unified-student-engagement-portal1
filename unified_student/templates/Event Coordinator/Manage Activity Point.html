@@ -1,0 +1,104 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#{% extends 'admin/admin_index.html' %}#}
+{#{% block body %}#}
+{##}
+{#<form id="form1" name="form1" method="post" action="/myapp/add_activitypoint_post/">#}
+{#{% csrf_token %}#}
+{#  <table width="200" border="1"class="table table-bordered">#}
+{#    <tr>#}
+{#      <td><p>Point</p></td>#}
+{#      <td><label for="textfield"></label>#}
+{#      <input type="text" name="textfield" id="textfield" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Event Type</td>#}
+{#      <td><label for="select"></label>#}
+{#        <select name="select" id="select">#}
+{#            {% for i in eventd %}#}
+{#            <option value="{{ i.id }}">{{ i.event_name }}</option>#}
+{#            {% endfor %}#}
+{##}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Student</td>#}
+{#      <td><label for="select2"></label>#}
+{#        <select name="select2" id="select2">#}
+{#            {% for i in student %}#}
+{#             <option value="{{ i.id }}">{{ i.name }}</option>#}
+{#            {% endfor %}#}
+{##}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Coordinator</td>#}
+{#      <td><label for="select3"></label>#}
+{#        <select name="select3" id="select2">#}
+{#            {% for i in eventc %}#}
+{#             <option value="{{ i.id }}">{{ i.name }}</option>#}
+{#            {% endfor %}#}
+{##}
+{#      </select></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>&nbsp;</td>#}
+{#      <td><input type="submit" name="button" id="button" value="Add"class="btn btn-success" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#{% endblock %}#}
+{##}
+{#</body>#}
+{#</html>#}
+
+
+{% extends 'Event Coordinator/ec_index.html' %}
+{% block body %}
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-4">
+    <h2 class="text-center">Add KTU Activity Points</h2>
+
+    <form id="form1" name="form1" method="post" action="/myapp/add_activitypoint_post/">
+        {% csrf_token %}
+
+<div class="form-group">
+            <label for="select">Activity</label>
+            <select name="select" id="select" class="form-control" required>
+                {% for i in activity %}
+                    <option value="{{ i.id }}">{{ i.category }}-{{ i.point }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select">Event Type</label>
+            <select name="select1" id="select" class="form-control" required>
+                {% for i in event %}
+                    <option value="{{ i.id }}">{{ i.event_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="select2">Student</label>
+            <select name="select2" id="select2" class="form-control" required>
+                {% for i in student %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Add Activity Points</button>
+    </form>
+</div>
+
+{% endblock %}
+

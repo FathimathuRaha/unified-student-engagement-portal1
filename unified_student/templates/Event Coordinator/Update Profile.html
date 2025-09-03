@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% extends 'Event Coordinator/ec_index.html' %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="/myapp/event_update_profile_post/">
+    {% csrf_token %}
+  <table width="200" border="1" class="table table-bordered">
+    <tr>
+      <td>Name</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"  value="{{ data.name }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.email }}"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Phone No</td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.phone }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.place }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" value="{{ data.post }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6"value="{{ data.pin }}"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td><p>District</p></td>
+      <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" value="{{ data.district }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td><label for="textfield8"></label>
+      <input type="date" name="textfield8" id="textfield8"value="{{ data.dob }}"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield9" id="textfield9" value="{{ data.gender }}"required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><img src="{{ data.photo }}" height="90" width="90">
+      <input type="file" name="textfield10" id="textfield10" value="{{ data.photo }}"required class="form-control"/></td>
+    </tr>
+      <tr>
+      <td>Collage name</td>
+      <td><label for="textfield10"></label>
+      <input type="text" name="textfield11" id="textfield11" value="{{ data.college_name }}"required class="form-control"/></td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Update"class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5 mb-5" style="min-height: 70vh;">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 100%; max-width: 500px;">
+        <h3 class="text-center mb-4 fw-bold text-primary">
+            <i class="bi bi-shield-lock-fill me-2"></i>Change Password
+        </h3>
+
+        <form method="post" action="/myapp/changepassword_post/">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="current_password" class="form-label">Current Password</label>
+                <input type="password" name="textfield" id="current_password" class="form-control rounded-pill shadow-sm" required placeholder="Enter current password">
+            </div>
+
+            <div class="mb-3">
+                <label for="new_password" class="form-label">New Password</label>
+                <input type="password" name="textfield2" id="new_password" class="form-control rounded-pill shadow-sm" required placeholder="Enter new password">
+            </div>
+
+            <div class="mb-4">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" name="textfield3" id="confirm_password" class="form-control rounded-pill shadow-sm" required placeholder="Re-enter new password">
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary rounded-pill fw-semibold">
+                    <i class="bi bi-arrow-repeat me-2"></i>Update Password
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
